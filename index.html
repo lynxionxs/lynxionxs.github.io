@@ -47,6 +47,10 @@
 				console.log('LOAD WEATHER PAGE');
         document.getElementById('msg').innerText = 'LOAD WEATHER PAGE';
 			}
+			else if (data.action == 'open-news-item') {
+				console.log('LOAD NEWS ITEM PAGE');
+        document.getElementById('msg').innerText = 'LOAD NEWS ITEM PAGE, id: '+data.id;
+			}
 		}, false);
 
 
