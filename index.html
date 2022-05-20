@@ -14,6 +14,10 @@
   <button onclick="minimizeNewsbar()">Minimize Newsbar</button><br><br>
   <button onclick="restoreNewsbar()">Restore Newsbar</button><br><br>
 
+  <hr>
+
+  <h1 id="msg" style="color: red"></h1>
+
   <script>
 
     // test minimize news bar
@@ -24,6 +28,19 @@
     function restoreNewsbar() {
       window.postMessage(JSON.stringify({ action: 'restore-newsbar' }), "*");
     }
+
+    window.addEventListener('message', (event) => {
+			var data = JSON.parse(event.data);
+			console.log(data);
+			if (data.action == 'open-home') {
+				console.log('LOAD HOME PAGE');
+        document.getElementById('msg').innerText = 'LOAD HOME PAGE';
+			}
+			else if (data.action == 'open-weather') {
+				console.log('LOAD WEATHER PAGE');
+        document.getElementById('msg').innerText = 'LOAD WEATHER PAGE';
+			}
+		}, false);
 
 
     
