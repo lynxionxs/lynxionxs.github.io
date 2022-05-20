@@ -9,10 +9,24 @@
   <h2>Saying hello to my page!...</h2>
   <img src="paint.png"/>
 
+  <hr>
+
+  <button onclick="minimizeNewsbar()">Minimize Newsbar</button><br><br>
+  <button onclick="restoreNewsbar()">Restore Newsbar</button><br><br>
+
   <script>
-    window.setTimeout(() => {
-      window.postMessage(JSON.stringify({ testData: 'some test data...' }), "*");
-    }, 10000);
+
+    // test minimize news bar
+    function minimizeNewsbar() {
+      window.postMessage(JSON.stringify({ action: 'minimize-newsbar' }), "*");
+    }
+    // test restore news bar
+    function restoreNewsbar() {
+      window.postMessage(JSON.stringify({ action: 'restore-newsbar' }), "*");
+    }
+
+
+    
   </script>
 </body>
 </html>
