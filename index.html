@@ -11,12 +11,14 @@
 
   <hr>
 
-  <button onclick="minimizeNewsbar()">Minimize Newsbar</button><br><br>
-  <button onclick="restoreNewsbar()">Restore Newsbar</button><br><br>
+  <div id="desktop-controls" style="display: none;">
+    <button onclick="minimizeNewsbar()">Minimize Newsbar</button><br><br>
+    <button onclick="restoreNewsbar()">Restore Newsbar</button><br><br>
 
-  <hr>
+    <hr>
 
-  <h1 id="msg" style="color: red"></h1>
+    <h1 id="msg" style="color: red"></h1>
+  </div>
 
   <script>
 
@@ -32,6 +34,11 @@
     window.addEventListener('message', (event) => {
 			var data = JSON.parse(event.data);
 			console.log(data);
+      // show desktop app controls if in desktop app mode
+      if (data.hasOwnProperty('isDesktopApp')) {
+        document.getElementById('desktop-controls').style.display = 'block';
+      }
+
 			if (data.action == 'open-home') {
 				console.log('LOAD HOME PAGE');
         document.getElementById('msg').innerText = 'LOAD HOME PAGE';
