@@ -8,5 +8,12 @@
 <body>
   <h2>Saying hello to my page!...</h2>
   <img src="paint.png"/>
+
+  <script>
+    window.setTimeout(() => {
+      window.postMessage(JSON.stringify({ testData: 'some test data...' }), "*");
+    }, 10000);
+  </script>
 </body>
 </html>
+
